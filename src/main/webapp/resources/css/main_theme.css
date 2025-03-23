@@ -1,0 +1,159 @@
+/* 전체 페이지 스타일 */
+body {
+    background-color: #222323;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* 네비게이션 바 스타일 */
+.navbar {
+    background-color: #686868;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-logo {
+    color: #ffb400;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 15%;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-menu li {
+    margin: 0 10px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-link:hover {
+    color: #ffb400;
+}
+
+/* 메인 컨테이너 스타일 */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #686868;
+    border-radius: 10px;
+}
+
+/* 입력 필드 및 텍스트 영역 스타일 */
+.input-field, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #0092a6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* 버튼 스타일 */
+.btn {
+    background-color: #ba6d00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+/* 테이블 헤더 스타일 */
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #ffb400;
+}
+
+/* 테이블 행 hover 효과 */
+tr:hover {
+    background-color: #0092a6;
+    cursor: pointer;
+}
+
+.responsive-image {
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-container {
+        flex-direction: column;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .nav-menu li {
+        margin: 5px 0;
+    }
+
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .responsive-image {
+        max-width: 100px; /* 화면 너비가 768px 이하인 경우 이미지 최대 너비를 500px로 조정 */
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+}

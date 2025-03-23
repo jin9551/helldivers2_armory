@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.helldivers.board.dao.EnemyMapper">
+    <select id="count" resultType="int">
+        SELECT count(*) FROM tb_enemy
+    </select>
+
+    <select id="selectAll" resultType="EnemyDto">
+        SELECT e_id, e_race, e_type, name, img_path
+        FROM tb_enemy
+        ORDER BY e_id ASC
+    </select>
+
+</mapper>

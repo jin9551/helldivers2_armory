@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.helldivers.board.dao.EquipmentMapper">
+    <!--조건문-->
+    <sql id="searchCondition">
+        <if test="equip_type!=null">
+            AND a.equip_type #{equip_type}
+        </if>
+        <if test="name!=null">
+            AND replace(a.name,' ','') like concat('%',+replace(#{name},' ',''),'%')
+        </if>
+        <choose>
+            <when test="ap==null">
+            </when>
+            <when test="ap lte 4">
+                AND b.ap = #{ap}
+            </when>
+            <when test="ap gt 4">
+                AND b.ap >= 5
+            </when>
+        </choose>
+    </sql>
+
+    <!-- 장비 리스트 결과 개수 -->
+    <select id="searchResultCnt" parameterType="EquipmentDto" resultType="int">
+        SELECT count(*)
+        FROM tb_equipment a, tb_equipment_detail b
+        <include refid="searchCondition"/>
+    </select>
+
+    <!-- 장비 리스트 불러오기 -->
+    <select id="searchResult" parameterType="EquipmentDto" resultType="EquipmentDto">
+        SELECT a.equip_id, a.equip_type, a.name, a.img_path
+        FROM tb_equipment a, tb_equipment_detail b
+        <include refid="searchCondition"/>
+    </select>
+
+
+    <!-- 장비 상세 정보 조회-->
+    <select id="selectAllInfo" parameterType="int" resultType="EquipmentDto">
+        SELECT a.equip_id,
+               a.equip_type,
+               a.name,
+               a.img_path,
+               b.detail_id,
+               b.proj_type,
+               b.normal_dmg,
+               b.durable_dmg,
+               b.ap,
+               b.effect_type,
+               b.effect_dmg,
+               b.effect_durable_dmg,
+               b.eap,
+               b.note
+        FROM tb_equipment a,tb_equipment_detail b
+        WHERE a.equip_id = b.equip_id
+        AND a.equip_id = #{equip_id}
+    </select>
+
+
+</mapper>
