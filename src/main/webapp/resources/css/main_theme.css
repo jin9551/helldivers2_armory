@@ -86,12 +86,47 @@ body {
     width: 100%;
 }
 
+/* 이미지 크기 지정 */
+td.image-cell {
+    width: 190px;
+    height: 101px;
+    padding: 0;
+}
+td.image-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* 비율을 유지하면서 꽉 채움 */
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+/* 테이블 헤더 및 행 스타일 */
+/* 기존 정의 확장 */
+tr.list-header th,
+tr.list-header td,
+tr.list-row td {
+    border: 1px solid white;
+}
+
+tr.list-row td {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+tr.list-header th{
+    text-align: center;
+}
+
 /* 테이블 스타일 */
 table {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
 }
+
 
 /* 테이블 헤더 스타일 */
 th, td {
@@ -103,18 +138,56 @@ th {
     background-color: #ffb400;
 }
 
+
 /* 테이블 행 hover 효과 */
 tr:hover {
     background-color: #0092a6;
     cursor: pointer;
 }
 
+/* 이미지 반응형 */
 .responsive-image {
     width: 100%;
     height: auto;
     max-width: 100px;
     margin-bottom: 0;
     margin-top: 0;
+}
+/* 서치바 */
+.search-bar {
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar label {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.search-bar input,
+.search-bar select {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+a {
+    color: white; /* 링크 텍스트 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+a:hover {
+    color: #ffb400; /* 마우스 올렸을 때 색상 */
+    text-decoration: underline; /* 필요 시 밑줄 추가 */
+}
+
+a:visited {
+    color: white;
 }
 
 /* 반응형 디자인 */

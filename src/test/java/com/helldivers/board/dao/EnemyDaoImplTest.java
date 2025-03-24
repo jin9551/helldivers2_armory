@@ -18,18 +18,18 @@ public class EnemyDaoImplTest {
     @Autowired
     EnemyDao enemyDao;
 
-    @Test
-    public void count() throws Exception{
-        int count = enemyDao.count();
-        System.out.println("enemyDao.count() = " + count);
-        assertTrue(count != 0);
-    }
-
-    @Test
-    public void selectAll() throws Exception{
-        List<EnemyDto> list = enemyDao.selectAll();
-        System.out.println("enemyDao.selectAll() = " + list);
-        assertNotNull(list);
-    }
+//    @Test
+//    public void count() throws Exception{
+//        int count = enemyDao.count();
+//        System.out.println("enemyDao.count() = " + count);
+//        assertTrue(count != 0);
+//    }
+//
+//    @Test
+//    public void selectAll() throws Exception{
+//        List<EnemyDto> list = enemyDao.selectAll();
+//        System.out.println("enemyDao.selectAll() = " + list);
+//        assertNotNull(list);
+//    }
 
 }

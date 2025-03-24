@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/board/enemy")
+@RequestMapping("/enemy")
 public class EnemyController {
 
     @GetMapping("/list")

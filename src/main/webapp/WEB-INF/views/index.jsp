@@ -13,12 +13,12 @@
 <!-- 네비게이션 바 -->
 <nav class="navbar">
 	<div class="nav-container">
-		<a href="/" class="nav-logo"><img class="responsive-image" src="<c:url value='/img/main_logo.png'/>" alt="Helldivers 2"> 헬다2</a>
+		<a href="<c:url value='/'/>" class="nav-logo"><img class="responsive-image" src="<c:url value='/img/main_logo.png'/>" alt="Helldivers 2"> 헬다2</a>
 		<ul class="nav-menu">
-			<li><a href="/board" class="nav-link">Home</a></li>
-			<li><a href="/loadout" class="nav-link">장비 정보</a></li>
-			<li><a href="/equipments" class="nav-link">적 정보</a></li>
-			<li><a href="/enemies" class="nav-link">BTK 계산기</a></li>
+			<li><a href="<c:url value='/'/>" class="nav-link">Home</a></li>
+			<li><a href="<c:url value='/equipment/list'/>" class="nav-link">장비 정보</a></li>
+			<li><a href="<c:url value='/enemy/list'/>" class="nav-link">적 정보</a></li>
+<%--			<li><a href="/enemies" class="nav-link">BTK 계산기</a></li>--%>
 		</ul>
 	</div>
 </nav>

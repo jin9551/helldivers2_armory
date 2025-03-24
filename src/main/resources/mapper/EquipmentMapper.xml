@@ -6,10 +6,10 @@
     <!--조건문-->
     <sql id="searchCondition">
         <if test="equip_type!=null">
-            AND a.equip_type #{equip_type}
+            AND a.equip_type = #{equip_type}
         </if>
-        <if test="name!=null">
-            AND replace(a.name,' ','') like concat('%',+replace(#{name},' ',''),'%')
+        <if test="name!=null and name!=''">
+            AND replace(a.name,' ','') like concat('%',replace(#{name},' ',''),'%')
         </if>
         <choose>
             <when test="ap==null">
@@ -27,6 +27,7 @@
     <select id="searchResultCnt" parameterType="EquipmentDto" resultType="int">
         SELECT count(*)
         FROM tb_equipment a, tb_equipment_detail b
+        where a.equip_id = b.equip_id
         <include refid="searchCondition"/>
     </select>
 
@@ -34,6 +35,7 @@
     <select id="searchResult" parameterType="EquipmentDto" resultType="EquipmentDto">
         SELECT a.equip_id, a.equip_type, a.name, a.img_path
         FROM tb_equipment a, tb_equipment_detail b
+        WHERE a.equip_id = b.equip_id
         <include refid="searchCondition"/>
     </select>
 

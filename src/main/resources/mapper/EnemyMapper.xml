@@ -6,10 +6,10 @@
     <!--조건문-->
     <sql id="searchCondition">
         <if test="e_race!=null">
-            AND a.e_race #{e_race}
+            AND a.e_race=#{e_race}
         </if>
-        <if test="name!=null">
-            AND replace(a.name,' ','') like concat('%',+replace(#{name},' ',''),'%')
+        <if test="name!=null and name!=''">
+            AND replace(a.name,' ','') like concat('%',replace(#{name},' ',''),'%')
         </if>
         <if test="e_type!=null">
             AND a.e_type = #{e_type}
@@ -20,6 +20,7 @@
     <select id="searchResultCnt" parameterType="EnemyDto" resultType="int">
         SELECT count(*)
         FROM tb_enemy a, tb_enemy_detail b
+        where a.e_id = b.e_id
         <include refid="searchCondition"/>
     </select>
 
@@ -27,6 +28,7 @@
     <select id="searchResult" parameterType="EnemyDto" resultType="EnemyDto">
         SELECT a.e_id, a.e_race, a.e_type, a.img_path
         FROM tb_enemy a, tb_enemy_detail b
+        WHERE a.e_id = b.e_id
         <include refid="searchCondition"/>
     </select>
 

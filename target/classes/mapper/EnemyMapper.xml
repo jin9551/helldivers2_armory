@@ -3,14 +3,56 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.helldivers.board.dao.EnemyMapper">
-    <select id="count" resultType="int">
-        SELECT count(*) FROM tb_enemy
+    <!--조건문-->
+    <sql id="searchCondition">
+        <if test="e_race!=null">
+            AND a.e_race=#{e_race}
+        </if>
+        <if test="name!=null and name!=''">
+            AND replace(a.name,' ','') like concat('%',replace(#{name},' ',''),'%')
+        </if>
+        <if test="e_type!=null">
+            AND a.e_type = #{e_type}
+        </if>
+    </sql>
+
+    <!-- 적 리스트 결과 개수 -->
+    <select id="searchResultCnt" parameterType="EnemyDto" resultType="int">
+        SELECT count(*)
+        FROM tb_enemy a, tb_enemy_detail b
+        where a.e_id = b.e_id
+        <include refid="searchCondition"/>
     </select>
 
-    <select id="selectAll" resultType="EnemyDto">
-        SELECT e_id, e_race, e_type, name, img_path
-        FROM tb_enemy
-        ORDER BY e_id ASC
+    <!-- 적 리스트 불러오기 -->
+    <select id="searchResult" parameterType="EnemyDto" resultType="EnemyDto">
+        SELECT a.e_id, a.e_race, a.e_type, a.img_path
+        FROM tb_enemy a, tb_enemy_detail b
+        WHERE a.e_id = b.e_id
+        <include refid="searchCondition"/>
+    </select>
+
+
+    <!-- 적 상세 정보 조회-->
+    <select id="selectAllInfo" parameterType="int" resultType="EnemyDto">
+        SELECT a.e_id,
+               a.e_race,
+               a.e_type,
+               a.name,
+               b.part_name,
+               b.detail_id,
+               b.health,
+               b.ap,
+               b.durable,
+               b.main_per,
+               b.bleed,
+               b.fatal,
+               b.ex_dr,
+               b.img_1,
+               b.img_2
+        FROM tb_enemy a, tb_enemy_detail b
+        WHERE a.e_id = b.e_id
+          AND a.e_id = #{e_id}
     </select>
 
 </mapper>
