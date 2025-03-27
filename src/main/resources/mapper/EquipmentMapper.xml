@@ -15,10 +15,16 @@
             <when test="ap==null">
             </when>
             <when test="ap lte 4">
-                AND b.ap = #{ap}
+                AND a.equip_id IN (SELECT b.equip_id
+                                FROM tb_equipment_detail b
+                                where a.equip_id = b.equip_id
+                                AND b.ap = #{ap} )
             </when>
             <when test="ap gt 4">
-                AND b.ap >= 5
+                AND a.equip_id IN (SELECT b.equip_id
+                FROM tb_equipment_detail b
+                where a.equip_id = b.equip_id
+                AND b.ap >= 5 )
             </when>
         </choose>
     </sql>
@@ -26,16 +32,16 @@
     <!-- 장비 리스트 결과 개수 -->
     <select id="searchResultCnt" parameterType="EquipmentDto" resultType="int">
         SELECT count(*)
-        FROM tb_equipment a, tb_equipment_detail b
-        where a.equip_id = b.equip_id
+        FROM tb_equipment a
+        where true
         <include refid="searchCondition"/>
     </select>
 
     <!-- 장비 리스트 불러오기 -->
     <select id="searchResult" parameterType="EquipmentDto" resultType="EquipmentDto">
         SELECT a.equip_id, a.equip_type, a.name, a.img_path
-        FROM tb_equipment a, tb_equipment_detail b
-        WHERE a.equip_id = b.equip_id
+        FROM tb_equipment a
+        WHERE true
         <include refid="searchCondition"/>
     </select>
 
@@ -48,6 +54,7 @@
                a.img_path,
                b.detail_id,
                b.proj_type,
+               b.proj_name,
                b.normal_dmg,
                b.durable_dmg,
                b.ap,

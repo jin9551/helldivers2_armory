@@ -19,16 +19,16 @@
     <!-- 적 리스트 결과 개수 -->
     <select id="searchResultCnt" parameterType="EnemyDto" resultType="int">
         SELECT count(*)
-        FROM tb_enemy a, tb_enemy_detail b
-        where a.e_id = b.e_id
+        FROM tb_enemy a
+        where true
         <include refid="searchCondition"/>
     </select>
 
     <!-- 적 리스트 불러오기 -->
     <select id="searchResult" parameterType="EnemyDto" resultType="EnemyDto">
-        SELECT a.e_id, a.e_race, a.e_type, a.img_path
-        FROM tb_enemy a, tb_enemy_detail b
-        WHERE a.e_id = b.e_id
+        SELECT a.e_id, a.e_race, a.name, a.e_type, a.img_path
+        FROM tb_enemy a
+        WHERE true
         <include refid="searchCondition"/>
     </select>
 
@@ -39,6 +39,7 @@
                a.e_race,
                a.e_type,
                a.name,
+               a.img_path,
                b.part_name,
                b.detail_id,
                b.health,

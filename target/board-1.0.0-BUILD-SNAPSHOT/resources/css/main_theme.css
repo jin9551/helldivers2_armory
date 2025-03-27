@@ -25,14 +25,31 @@ body {
 }
 
 .nav-logo {
-    color: #ffb400;
+    color: #ffd966;
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-    margin-right: 15%;
+    margin-right: 7%;
+}
+
+/* 스팬 태그 폰트 지정 */
+.nav-logo span {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    vertical-align: super;
+}
+
+.nav-logo:hover span {
+    text-decoration: none;
 }
 
 .nav-menu {
+    /* 로고와 동일한 폰트 적용*/
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+
     list-style: none;
     display: flex;
     margin: 0;
@@ -52,7 +69,8 @@ body {
 }
 
 .nav-link:hover {
-    color: #ffb400;
+    color: #ffd966;
+    text-decoration: none;
 }
 
 /* 메인 컨테이너 스타일 */
@@ -69,7 +87,7 @@ body {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: #0092a6;
+    background-color: #758b9e;
     color: white;
     border: none;
     border-radius: 5px;
@@ -86,12 +104,54 @@ body {
     width: 100%;
 }
 
+/* 이미지 크기 지정 */
+td.image-cell {
+    width: 150px;
+    height: 60px;
+    padding: 0;
+}
+td.image-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* 비율을 유지하면서 꽉 채움 */
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+/* 테이블 헤더 및 행 스타일 */
+/* 기존 정의 확장 */
+tr.list-header th,
+tr.list-header td,
+tr.list-row td {
+    border: 1px solid #ffd966;
+}
+
+tr.list-row td {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #2b2b2b;
+    font-size: 13px;
+}
+
+tr.list-header th{
+    text-align: center;
+    background-color: #505050;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* 테이블 스타일 */
 table {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
 }
+
 
 /* 테이블 헤더 스타일 */
 th, td {
@@ -100,21 +160,149 @@ th, td {
 }
 
 th {
-    background-color: #ffb400;
+    background-color: #ffd966;
 }
+
 
 /* 테이블 행 hover 효과 */
 tr:hover {
-    background-color: #0092a6;
+    background-color: #758b9e;
     cursor: pointer;
 }
 
+
+.read-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #2b2b2b;
+    color: white;
+    border: 2px solid #ffd966;
+    box-shadow: 0 0 10px rgba(255, 217, 102, 0.2);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.read-table th {
+    background-color: #ffd966;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* 전술 스타일: 목록 테이블도 강조 효과 적용 */
+tr.list-header {
+    background-color: #505050;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    box-shadow: inset 0 -2px 0 #ffd966;
+}
+
+tr.list-row {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #2b2b2b;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+tr.list-row:hover {
+    background-color: #3a3a3a;
+    cursor: pointer;
+}
+
+.read-table td {
+    /*border: 1px solid white;*/
+    border: 1px solid #ffd966;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+}
+
+/* hover 효과 제거 */
+.read-table tr:hover {
+    background-color: transparent;
+    cursor: default;
+}
+
+.read-table th.tactical-highlight {
+    background-color: #505050 !important;
+    color: white !important;
+    border: 1px solid #ffd966 !important;
+    text-shadow: 0 0 3px #000 !important;
+}
+
+
+.tactical-highlight {
+    background-color: #505050;
+    color: white;
+    font-weight: bold;
+}
+
+.status-icon {
+    font-size: 16px;
+}
+
+.status-icon.yes {
+    color: #ffd966;
+    font-weight: bold;
+}
+
+.status-icon.no {
+    color: #686868;
+    font-weight: normal;
+}
+
+
+
+/* 이미지 반응형 */
 .responsive-image {
     width: 100%;
     height: auto;
     max-width: 100px;
     margin-bottom: 0;
     margin-top: 0;
+}
+/* 서치바 */
+.search-bar {
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar label {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.search-bar input,
+.search-bar select {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+a {
+    color: white; /* 링크 텍스트 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+a:hover {
+    color: #ffd966; /* 마우스 올렸을 때 색상 */
+    text-decoration: none; /* 필요 시 밑줄 추가 */
+}
+
+a:visited {
+    color: white;
 }
 
 /* 반응형 디자인 */

@@ -23,6 +23,15 @@ public class EnemyServiceImpl implements EnemyService {
 
     @Override
     public List<EnemyDto> getSelectAllInfo(Integer e_id) throws Exception {
-        return enemyDao.selectAllInfo(e_id);
+        List<EnemyDto> list = enemyDao.selectAllInfo(e_id);
+        list.forEach(enemyDto -> {
+            if (enemyDto.getMain_per() >= 0 && enemyDto.getDurable() >= 0) {
+                enemyDto.setMain_per(enemyDto.getMain_per() * 100);
+                enemyDto.setDurable(enemyDto.getDurable() * 100);
+                enemyDto.setEx_dr(enemyDto.getEx_dr() * 100);
+            }
+            System.out.println("enemyDto = " + enemyDto);
+        });
+        return list;
     }
 }

@@ -4,6 +4,7 @@
 <head>
     <title>장비 목록</title>
     <link rel="stylesheet" href="<c:url value='/css/main_theme.css'/>">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -11,12 +12,13 @@
 <nav class="navbar">
     <div class="nav-container">
         <a href="<c:url value='/'/>" class="nav-logo">
-            <img class="responsive-image" src="<c:url value='/img/main_logo.png'/>" alt="Helldivers 2"> 헬다2
+            <img class="responsive-image" src="<c:url value='/img/main_logo.png'/>" alt="Helldivers 2">
+            <span>Helldiver's Arsenal</span>
         </a>
         <ul class="nav-menu">
             <li><a href="<c:url value='/'/>" class="nav-link">Home</a></li>
-            <li><a href="<c:url value='/equipment/list'/>" class="nav-link">장비 정보</a></li>
-            <li><a href="<c:url value='/enemy/list'/>" class="nav-link">적 정보</a></li>
+            <li><a href="<c:url value='/equipment/list'/>" class="nav-link">장비정보</a></li>
+            <li><a href="<c:url value='/enemy/list'/>" class="nav-link">적정보</a></li>
         </ul>
     </div>
 </nav>
@@ -72,7 +74,7 @@
         <c:forEach var="equip" items="${list}">
             <tr class="list-row">
                 <td style="text-align: center">${equip.equip_id}</td>
-                <td class="image-cell"><img src="<c:url value='${equip.img_path}'/>" alt="이미지"/></td>
+                <td class="image-cell"><a href="read?equip_id=${equip.equip_id}"><img src="<c:url value='${equip.img_path}'/>" alt="이미지"/></a></td>
                 <td><a href="read?equip_id=${equip.equip_id}">${equip.name}</a></td>
                 <td style="text-align: center">
                     <c:choose>

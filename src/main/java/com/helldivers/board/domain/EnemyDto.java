@@ -15,8 +15,8 @@ public class EnemyDto {
     private Integer ap;        // 장갑
     private double durable;    // 내구력
     private double main_per;   // 총체력에 미치는 영향력
-    private char bleed;       // 출혈 여부
-    private char fatal;       // 치명 여부
+    private Integer bleed;       // 출혈 여부
+    private Integer fatal;       // 치명 여부
     private double ex_dr;     // 폭발저항력
     private String img_1;     // 적 파트 이미지 경로 1
     private String img_2;     // 적 파트 이미지 경로 2
@@ -119,19 +119,19 @@ public class EnemyDto {
         this.main_per = main_per;
     }
 
-    public char getBleed() {
+    public Integer getBleed() {
         return bleed;
     }
 
-    public void setBleed(char bleed) {
+    public void setBleed(Integer bleed) {
         this.bleed = bleed;
     }
 
-    public char getFatal() {
+    public Integer getFatal() {
         return fatal;
     }
 
-    public void setFatal(char fatal) {
+    public void setFatal(Integer fatal) {
         this.fatal = fatal;
     }
 
