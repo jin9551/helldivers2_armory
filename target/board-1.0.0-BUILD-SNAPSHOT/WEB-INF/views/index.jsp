@@ -1,62 +1,55 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-<%@ page session="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
+	<title>Helldivers 2 BTK 계산기</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="<c:url value='/css/main_theme.css'/>">
 	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-	<title>Helldivers 2 Arsenal</title>
 </head>
 <body>
-<!-- 네비게이션 바 -->
-<nav class="navbar">
-	<div class="nav-container">
-		<a href="<c:url value='/'/>" class="nav-logo">
-			<img class="responsive-image" src="<c:url value='/img/main_logo.png'/>" alt="Helldivers 2">
-			<span>Helldiver's Arsenal</span>
-		</a>
-		<ul class="nav-menu">
-			<li><a href="<c:url value='/'/>" class="nav-link">Home</a></li>
-			<li><a href="<c:url value='/equipment/list'/>" class="nav-link">장비정보</a></li>
-			<li><a href="<c:url value='/enemy/list'/>" class="nav-link">적정보</a></li>
-<%--			<li><a href="/enemies" class="nav-link">BTK 계산기</a></li>--%>
-		</ul>
-	</div>
-</nav>
+
+<%@ include file="/WEB-INF/views/navbar.jsp" %>
 
 <div class="container">
-	<h1>Helldivers 2 게시판</h1>
-	<form action="/post" method="post">
-		<input type="text" name="title" class="input-field" placeholder="제목을 입력하세요" required>
-		<textarea name="content" class="input-field" placeholder="내용을 입력하세요" required></textarea>
-		<button type="submit" class="btn">게시하기</button>
-	</form>
-</div>
+	<h2>BTK 계산 결과</h2>
 
-<div class="container">
-	<h2>게시글 목록</h2>
-	<table border="1">
-		<thead>
-		<tr>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>날짜</th>
-		</tr>
-		</thead>
-		<tbody>
-		<c:forEach var="post" items="${posts}">
+	<c:if test="${not empty resultList}">
+		<table class="read-table">
+			<thead>
 			<tr>
-				<td><a href="/post/${post.id}">${post.title}</a></td>
-				<td>${post.author}</td>
-				<td>${post.date}</td>
+				<th>적 이름</th>
+				<th>부위</th>
+				<th>필요한 타수</th>
+				<th>처치 가능 여부</th>
 			</tr>
-		</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+			<c:forEach var="res" items="${resultList}">
+				<tr>
+					<td>${res.enemyName}</td>
+					<td>${res.partName}</td>
+					<td>${res.shotsNeeded}</td>
+					<td>
+                            <span class="status-icon ${res.killable ? 'yes' : 'no'}">
+									${res.killable ? '✔' : '✖'}
+							</span>
+					</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+	</c:if>
+
+	<br/>
+	<a href="<c:url value='/equipment/list'/>" class="btn list-btn">
+		<span class="icon">📦</span> 장비 목록
+	</a>
+	<a href="<c:url value='/enemy/list'/>" class="btn list-btn">
+		<span class="icon">👾</span> 적 목록
+	</a>
 </div>
+
 </body>
 </html>
-

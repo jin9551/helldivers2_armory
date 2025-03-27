@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <title>장비 목록</title>
@@ -9,19 +10,8 @@
 <body>
 
 <!-- 네비게이션 바 -->
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="<c:url value='/'/>" class="nav-logo">
-            <img class="responsive-image" src="<c:url value='/img/main_logo.png'/>" alt="Helldivers 2">
-            <span>Helldiver's Arsenal</span>
-        </a>
-        <ul class="nav-menu">
-            <li><a href="<c:url value='/'/>" class="nav-link">Home</a></li>
-            <li><a href="<c:url value='/equipment/list'/>" class="nav-link">장비정보</a></li>
-            <li><a href="<c:url value='/enemy/list'/>" class="nav-link">적정보</a></li>
-        </ul>
-    </div>
-</nav>
+<%@ include file="/WEB-INF/views/navbar.jsp" %>
+
 <!-- 검색바 -->
 <div class="search-bar container">
     <form action="<c:url value='/equipment/list'/>" method="get">
@@ -71,9 +61,10 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="equip" items="${list}">
+        <c:forEach var="equip" items="${list}" varStatus="status">
             <tr class="list-row">
-                <td style="text-align: center">${equip.equip_id}</td>
+                <td style="text-align: center">${status.index + 1}</td>
+                <td style="text-align: center" hidden="hidden">${equip.equip_id}</td>
                 <td class="image-cell"><a href="read?equip_id=${equip.equip_id}"><img src="<c:url value='${equip.img_path}'/>" alt="이미지"/></a></td>
                 <td><a href="read?equip_id=${equip.equip_id}">${equip.name}</a></td>
                 <td style="text-align: center">

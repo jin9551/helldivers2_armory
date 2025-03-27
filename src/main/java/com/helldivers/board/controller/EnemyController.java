@@ -27,10 +27,11 @@ public class EnemyController {
     @GetMapping("/list")
     public String list(EnemyDto enemyDto, Model model){
         try {
+            System.out.println("enemyDto = " + enemyDto);
             int count = enemyService.getSearchResultCnt(enemyDto);
-            System.out.println("count : " + count);
+//            System.out.println("count : " + count);
             List<EnemyDto> list = enemyService.getSearchResult(enemyDto);
-            System.out.println("list = " + list);
+//            System.out.println("list = " + list);
             model.addAttribute("list", list);
             model.addAttribute("count", count);
         } catch (Exception e) {

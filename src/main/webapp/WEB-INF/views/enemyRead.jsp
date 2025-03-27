@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <title>적 상세 정보</title>
@@ -9,23 +10,14 @@
 <body>
 
 <!-- 네비게이션 바 -->
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="<c:url value='/'/>" class="nav-logo">
-            <img class="responsive-image" src="<c:url value='/img/main_logo.png'/>" alt="Helldivers 2">
-            <span>Helldiver's Arsenal</span>
-        </a>
-        <ul class="nav-menu">
-            <li><a href="<c:url value='/'/>" class="nav-link">Home</a></li>
-            <li><a href="<c:url value='/equipment/list'/>" class="nav-link">장비정보</a></li>
-            <li><a href="<c:url value='/enemy/list'/>" class="nav-link">적정보</a></li>
-        </ul>
-    </div>
-</nav>
+<%@ include file="/WEB-INF/views/navbar.jsp" %>
+
 
 <!-- 적 상세 정보 -->
 <div class="container">
-    <a href="list">← 목록으로 돌아가기</a>
+    <div style="text-align: right">
+        <a href="list" class="btn-small">📋 목록</a>
+    </div>
     <c:if test="${not empty list}">
         <c:set var="main" value="${list[0]}"/>
         <table class="read-table">
@@ -112,7 +104,9 @@
         <br/>
     </c:forEach>
     <br/>
-    <a href="list">← 목록으로 돌아가기</a>
+    <div style="text-align: right">
+        <a href="list" class="btn-small">📋 목록</a>
+    </div>
 </div>
 
 </body>

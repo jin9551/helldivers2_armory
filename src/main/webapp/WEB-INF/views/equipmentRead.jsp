@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <title>장비 상세 정보</title>
@@ -9,24 +10,15 @@
 <body>
 
 <!-- 네비게이션 바 -->
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="<c:url value='/'/>" class="nav-logo">
-            <img class="responsive-image" src="<c:url value='/img/main_logo.png'/>" alt="Helldivers 2">
-            <span>Helldiver's Arsenal</span>
-        </a>
-        <ul class="nav-menu">
-            <li><a href="<c:url value='/'/>" class="nav-link">Home</a></li>
-            <li><a href="<c:url value='/equipment/list'/>" class="nav-link">장비정보</a></li>
-            <li><a href="<c:url value='/enemy/list'/>" class="nav-link">적정보</a></li>
-        </ul>
-    </div>
-</nav>
+<%@ include file="/WEB-INF/views/navbar.jsp" %>
+
 
 <div class="container">
-    <a href="list">← 목록으로 돌아가기</a>
+    <div style="text-align: right">
+        <a href="list" class="btn-small">📋 목록</a>
+    </div>
     <table class="read-table">
-        <tbody>
+<%--        <tbody>--%>
         <!-- 장비 기본 정보: 첫 번째 요소로부터 출력 -->
         <c:if test="${not empty list}">
             <c:set var="main" value="${list[0]}" />
@@ -52,9 +44,11 @@
                 </td>
             </tr>
         </c:if>
-
+    </table>
+    <c:forEach var="equip" items="${list}">
+        <table class="read-table">
         <!-- 기타 상세 정보는 반복 출력 -->
-        <c:forEach var="equip" items="${list}">
+
             <!-- 탄종 -->
             <tr>
                 <th class="tactical-highlight" rowspan="2">탄종: ${equip.proj_name}</th>
@@ -93,6 +87,7 @@
                 <td>${equip.effect_durable_dmg}</td>
                 <td>${equip.eap}</td>
             </tr>
+            <br/>
 
             <!-- 비고 -->
             <c:if test="${not empty equip.note}">
@@ -100,12 +95,14 @@
                     <td colspan="4"><strong>비고:</strong> ${equip.note}</td>
                 </tr>
             </c:if>
-        </c:forEach>
-        </tbody>
-    </table>
 
-    <br/>
-    <a href="list">← 목록으로 돌아가기</a>
+<%--        </tbody>--%>
+        </table>
+        <br/>
+    </c:forEach>
+    <div style="text-align: right">
+        <a href="list" class="btn-small">📋 목록</a>
+    </div>
 </div>
 
 </body>

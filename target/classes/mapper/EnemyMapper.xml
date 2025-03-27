@@ -5,7 +5,7 @@
 <mapper namespace="com.helldivers.board.dao.EnemyMapper">
     <!--조건문-->
     <sql id="searchCondition">
-        <if test="e_race!=null">
+        <if test="e_race!=null and e_race!=''">
             AND a.e_race=#{e_race}
         </if>
         <if test="name!=null and name!=''">
