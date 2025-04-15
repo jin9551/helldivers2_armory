@@ -6,6 +6,10 @@ making a Helldivers 2 information site using spring mvc project
 + Provide information of various weapons(primary, secondary, support, etc)
 + Prorvde information of horrid enemies(pictures, weak points, stats, etc)
 
+# Achieved Goals :
+* created modules for equipments and enemies
+* created CI pipeline with Github Actions
+
 # Server Structure
 ![server_structure](https://github.com/user-attachments/assets/25e38ab4-06b0-4aea-9d95-cbf147a286df)
 
