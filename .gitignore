@@ -1,0 +1,9 @@
+/src/test/
+/src/test/java/
+/src/test/java/com/helldivers/board/
+/src/test/java/com/helldivers/board/controller/
+/src/test/java/com/helldivers/board/controller/EquipmentControllerTest.java
+/src/test/java/com/helldivers/board/dao/
+/src/test/java/com/helldivers/board/dao/EnemyDaoImplTest.java
+/src/test/java/com/helldivers/board/dao/EquipmentDaoImplTest.java
+/src/test/resources/
