@@ -1,3 +1,4 @@
+/*
 package com.helldivers.board.service;
 
 import com.helldivers.board.domain.EquipmentDto;
@@ -89,3 +90,4 @@ public class EffectivenessService {
         return (int)Math.ceil((double) hp / totalDamage);
     }
 }
+*/
