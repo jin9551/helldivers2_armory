@@ -7,3 +7,4 @@
 /src/test/java/com/helldivers/board/dao/EnemyDaoImplTest.java
 /src/test/java/com/helldivers/board/dao/EquipmentDaoImplTest.java
 /src/test/resources/
+/target/
