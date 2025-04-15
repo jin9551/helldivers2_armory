@@ -1,21 +1,24 @@
 package com.helldivers.board.controller;
 
+import org.springframework.stereotype.Controller;
+
+@Controller
 public class DamageCalculatorController {
 
-    public static void main(String[] args) {
-        String result = calculateTimeToKill("120", 1000, 1000, 5);
-        System.out.println("TTK: " + result + "초");
-
-
-        String result1 = calculateHpChunks("120", 100, 145);  // 출력: "2"
-        String result2 = calculateHpChunks("Beam", 100, 80); // 출력: "--"
-        String result3 = calculateHpChunks("90", 0, 80);     // 출력: "--"
-
-        System.out.println("Result1: " + result1);
-        System.out.println("Result2: " + result2);
-        System.out.println("Result3: " + result3);
-
-    }
+//    public static void main(String[] args) {
+//        String result = calculateTimeToKill("120", 1000, 1000, 5);
+//        System.out.println("TTK: " + result + "초");
+//
+//
+//        String result1 = calculateHpChunks("120", 100, 145);  // 출력: "2"
+//        String result2 = calculateHpChunks("Beam", 100, 80); // 출력: "--"
+//        String result3 = calculateHpChunks("90", 0, 80);     // 출력: "--"
+//
+//        System.out.println("Result1: " + result1);
+//        System.out.println("Result2: " + result2);
+//        System.out.println("Result3: " + result3);
+//
+//    }
 
     /**
      * 적의 현재 HP를 최대 HP로 나눈 결과를 올림(ROUNDUP)하여 반환.
