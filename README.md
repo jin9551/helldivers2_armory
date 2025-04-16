@@ -9,6 +9,7 @@ making a Helldivers 2 information site using spring mvc project
 # Achieved Goals :
 * created modules for equipments and enemies
 * created CI pipeline with Github Actions
+* created Dockerfile, Docker Compose
 
 # Server Structure
 ![server_structure](https://github.com/user-attachments/assets/25e38ab4-06b0-4aea-9d95-cbf147a286df)
