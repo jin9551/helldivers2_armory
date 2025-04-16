@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8
+    container_name: helldivers-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: helldiverproject
+      MYSQL_USER: jin
+      MYSQL_PASSWORD: "0000"
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d
+
+
+  web:
+    build: .
+    container_name: helldivers-web
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  dbdata:
